@@ -6,29 +6,14 @@ package ua.oleksiiholyk.exception;
  */
 public class UserAlreadyExistsException extends Exception {
 
-    private String errCode;
-    private String errMsg;
+    private String code = "USER_ALREADY_EXISTS";
+    private String description = "A user with the given username already exists";
 
-    public String getErrCode() {
-        return errCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setErrCode(String errCode) {
-        this.errCode = errCode;
+    public String getDescription() {
+        return description;
     }
-
-    public String getErrMsg() {
-        return errMsg;
-    }
-
-    public void setErrMsg(String errMsg) {
-        this.errMsg = errMsg;
-    }
-
-    public UserAlreadyExistsException(String errCode, String errMsg) {
-        this.errCode = errCode;
-        this.errMsg = errMsg;
-    }
-
-
 }
