@@ -80,4 +80,25 @@ public class User {
                 ", hashedPassword='" + hashedPassword + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!id.equals(user.id)) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
+        if (plainTextPassword != null ? !plainTextPassword.equals(user.plainTextPassword) : user.plainTextPassword != null)
+            return false;
+        return hashedPassword != null ? hashedPassword.equals(user.hashedPassword) : user.hashedPassword == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return userName != null ? userName.hashCode() : 0;
+    }
 }
