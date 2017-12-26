@@ -31,11 +31,12 @@ public class AuthorizationController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> addUser(@RequestBody User user) {
+    @ResponseBody
+    public ResponseEntity<String> addUser(@RequestBody User user) throws UserAlreadyExistsException {
         try {
             return ResponseEntity.ok(userRepository.createUser(user).toString());
         } catch (UserAlreadyExistsException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getDescription());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toPseudoJson());
         }
     }
 }

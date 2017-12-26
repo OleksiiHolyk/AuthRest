@@ -16,4 +16,16 @@ public class UserAlreadyExistsException extends Exception {
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public String toString() {
+        return "UserAlreadyExistsException{" +
+                "code='" + code + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    public String toPseudoJson() {
+        return "{\"code\":\"" + code + "\"," + "\"description\":\"" + description + "\"}";
+    }
 }
