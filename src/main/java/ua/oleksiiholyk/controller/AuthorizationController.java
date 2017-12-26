@@ -35,7 +35,7 @@ public class AuthorizationController {
         try {
             return ResponseEntity.ok(userRepository.createUser(user).toString());
         } catch (UserAlreadyExistsException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getDescription());
         }
     }
 }

@@ -15,7 +15,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User createUser(User user) throws UserAlreadyExistsException {
-        userList.put(user.getUserName(), user);
-        return user;
+        if (userList.containsKey(user.getUserName())) {
+            throw new UserAlreadyExistsException();
+        } else {
+            userList.put(user.getUserName(), user);
+            return user;
+        }
     }
 }
